@@ -1,5 +1,0 @@
-package wbapi
-
-func WbClient() {
-
-}

@@ -19,10 +19,32 @@ func main() {
 		return
 	}
 
-	// echo
-	b.Handle(tele.OnText, func(ctx tele.Context) error {
-		user := ctx.Sender()
-		text := ctx.Text()
+	// buttons
+	var (
+		// Universal markup builders.
+		menu = &tele.ReplyMarkup{ResizeKeyboard: true}
+		// Reply buttons.
+		btnSlotsInforming                = menu.Text("Начать информирование о слотах")
+		btnAddWarehouseTracking          = menu.Text("Добавить склад на отслеживание")
+		btnAddSortingCentreTracking      = menu.Text("Добавить СЦ на отслеживание")
+		btnStopInformingSlots            = menu.Text("Приостановить информирование о слотах")
+		btnDeleteInformingWarehouseSlots = menu.Text("Удалить информирование о слотах на складах")
+	)
+
+	menu.Reply(
+		menu.Row(btnSlotsInforming),
+		menu.Row(btnAddWarehouseTracking),
+		menu.Row(btnAddSortingCentreTracking),
+		menu.Row(btnStopInformingSlots),
+		menu.Row(btnDeleteInformingWarehouseSlots),
+	)
+
+	b.Handle("/start", func(c tele.Context) error {
+		return c.Send("Hello!", menu)
+	})
+
+	b.Handle(&btnSlotsInforming, func(ctx tele.Context) error {
+		user, text := ctx.Sender(), ctx.Text()
 		msg, err := b.Send(user, text)
 		if err != nil {
 			return err
@@ -30,33 +52,41 @@ func main() {
 		return ctx.Send(msg)
 	})
 
-	// buttons
-	var (
-		// Universal markup builders.
-		menu = &tele.ReplyMarkup{ResizeKeyboard: true}
-
-		// Reply buttons.
-		btnHelp     = menu.Text("Help")
-		btnSettings = menu.Text("Settings")
-	)
-
-	menu.Reply(
-		menu.Row(btnHelp),
-		menu.Row(btnSettings),
-	)
-
-	b.Handle("/start", func(c tele.Context) error {
-		return c.Send("Hello!", menu)
-	})
-
-	// On reply button pressed (message)
-	b.Handle(&btnHelp, func(c tele.Context) error {
-		user := c.Sender()
-		msg, err := b.Send(user, "Some help")
+	b.Handle(&btnAddWarehouseTracking, func(ctx tele.Context) error {
+		user, text := ctx.Sender(), ctx.Text()
+		msg, err := b.Send(user, text)
 		if err != nil {
 			return err
 		}
-		return c.Send(msg)
+		return ctx.Send(msg)
 	})
+
+	b.Handle(&btnAddSortingCentreTracking, func(ctx tele.Context) error {
+		user, text := ctx.Sender(), ctx.Text()
+		msg, err := b.Send(user, text)
+		if err != nil {
+			return err
+		}
+		return ctx.Send(msg)
+	})
+
+	b.Handle(&btnStopInformingSlots, func(ctx tele.Context) error {
+		user, text := ctx.Sender(), ctx.Text()
+		msg, err := b.Send(user, text)
+		if err != nil {
+			return err
+		}
+		return ctx.Send(msg)
+	})
+
+	b.Handle(&btnDeleteInformingWarehouseSlots, func(ctx tele.Context) error {
+		user, text := ctx.Sender(), ctx.Text()
+		msg, err := b.Send(user, text)
+		if err != nil {
+			return err
+		}
+		return ctx.Send(msg)
+	})
+
 	b.Start()
 }
