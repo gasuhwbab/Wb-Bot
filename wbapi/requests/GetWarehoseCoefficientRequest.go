@@ -22,7 +22,7 @@ func GetWarehouseCoefficients(ctx context.Context,
 	}.Encode()
 	res := entities.CoefficientList{}
 	req = req.WithContext(ctx)
-	if err := sendRequest(wbc, req, &res); err != nil {
+	if err := sendRequest(wbc, req, &res.Coefficients); err != nil {
 		return nil, err
 	}
 	return &res, err

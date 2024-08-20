@@ -16,7 +16,7 @@ func GetWarehouses(ctx context.Context, wbc *wbapi.WbClient) (*entities.Warehous
 	}
 	req = req.WithContext(ctx)
 	res := entities.WarehouseList{}
-	if err := sendRequest(wbc, req, &res); err != nil {
+	if err := sendRequest(wbc, req, &res.Warehouses); err != nil {
 		return nil, err
 	}
 	return &res, nil

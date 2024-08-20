@@ -17,7 +17,7 @@ func GetCoefficients(ctx context.Context, wbc *wbapi.WbClient) (*entities.Coeffi
 	}
 	req = req.WithContext(ctx)
 	res := entities.CoefficientList{}
-	if err := sendRequest(wbc, req, &res); err != nil {
+	if err := sendRequest(wbc, req, &res.Coefficients); err != nil {
 		return nil, err
 	}
 	return &res, nil
