@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/gasuhwbab/wbbot/wbapi"
-	"github.com/gasuhwbab/wbbot/wbapi/requests"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi/requests"
 )
 
 func main() {

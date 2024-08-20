@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gasuhwbab/wbbot/wbapi"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi"
 )
 
 func sendRequest(wbc *wbapi.WbClient, req *http.Request, v interface{}) error {

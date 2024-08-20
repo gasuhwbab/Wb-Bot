@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/gasuhwbab/wbbot/wbapi"
-	"github.com/gasuhwbab/wbbot/wbapi/entities"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi/entities"
 )
 
 func GetWarehouseCoefficients(ctx context.Context,

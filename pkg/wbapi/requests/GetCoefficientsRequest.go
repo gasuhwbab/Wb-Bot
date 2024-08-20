@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gasuhwbab/wbbot/wbapi"
-	"github.com/gasuhwbab/wbbot/wbapi/entities"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi"
+	"github.com/gasuhwbab/wbbot/pkg/wbapi/entities"
 )
 
 func GetCoefficients(ctx context.Context, wbc *wbapi.WbClient) (*entities.CoefficientList,
