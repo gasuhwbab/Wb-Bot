@@ -13,7 +13,6 @@ func NewBot(bot *tgbotapi.Bot) *Bot {
 func (b *Bot) Start() error {
 	b.bot.Handle("/start", b.handlerStart)
 	b.bot.Handle(tgbotapi.OnText, b.handlerEcho)
-
 	b.bot.Start()
 	return nil
 }
